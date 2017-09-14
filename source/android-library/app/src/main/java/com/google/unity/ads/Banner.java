@@ -243,7 +243,7 @@ public class Banner {
                 if (!mPopupWindow.isShowing()) {
                     showPopUpWindow();
                 }
-                mAdView.resume();
+                //mAdView.resume();
             }
         });
     }
@@ -259,7 +259,7 @@ public class Banner {
                 mHidden = true;
                 mAdView.setVisibility(View.GONE);
                 mPopupWindow.dismiss();
-                mAdView.pause();
+                //mAdView.pause();
             }
         });
     }
