@@ -146,9 +146,9 @@ public class Banner {
             @Override
             public void onAdLoaded() {
                 if (mUnityListener != null) {
-                    if (!mPopupWindow.isShowing() && !mHidden) {
-                        showPopUpWindow();
-                    }
+//                    if (!mPopupWindow.isShowing() && !mHidden) {
+//                        showPopUpWindow();
+//                    }
                     mUnityListener.onAdLoaded();
                 }
             }
@@ -240,10 +240,13 @@ public class Banner {
                 Log.d(PluginUtils.LOGTAG, "Calling show() on Android");
                 mHidden = false;
                 mAdView.setVisibility(View.VISIBLE);
+                // if we show / dismiss popup window here,
+                // it will take too much time for next time we want to show a hidden banner ad
                 if (!mPopupWindow.isShowing()) {
                     showPopUpWindow();
                 }
-                //mAdView.resume();
+                mAdView.resume();
+                Log.d(PluginUtils.LOGTAG, "Calling show() on Android, without calling show popupwindow");
             }
         });
     }
@@ -258,8 +261,11 @@ public class Banner {
                 Log.d(PluginUtils.LOGTAG, "Calling hide() on Android");
                 mHidden = true;
                 mAdView.setVisibility(View.GONE);
-                mPopupWindow.dismiss();
-                //mAdView.pause();
+                // if we show / dismiss popup window here,
+                // it will take too much time for next time we want to show a hidden banner ad
+                //mPopupWindow.dismiss();
+                mAdView.pause();
+                Log.d(PluginUtils.LOGTAG, "Calling hide() on Android, without calling popupwindow dismiss");
             }
         });
     }
