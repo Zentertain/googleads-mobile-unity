@@ -244,7 +244,7 @@ public class Banner {
                     showPopUpWindow();
                 }
                 mPopupWindow.setTouchable(true);
-                mPopupWindow.update();
+                //mPopupWindow.update();
                 mAdView.resume();
             }
         });
@@ -261,7 +261,7 @@ public class Banner {
                 mHidden = true;
                 mAdView.setVisibility(View.GONE);
                 mPopupWindow.setTouchable(false);
-                mPopupWindow.update();
+                //mPopupWindow.update();
                 mAdView.pause();
             }
         });
